@@ -1,6 +1,7 @@
 package NovaPoshta;
 
 import java.net.URI;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -12,12 +13,11 @@ import org.apache.http.util.EntityUtils;
 
 public class RESTClientHelper {
 
-    public String getTTN(String body)
-    {
+    public String getTTN(String body) {
+        String json = "";
         HttpClient httpclient = HttpClients.createDefault();
 
-        try
-        {
+        try {
             URIBuilder builder = new URIBuilder("http://testapi.novaposhta.ua/v2.0/en/save_warehouse/json/");
 
 
@@ -26,23 +26,21 @@ public class RESTClientHelper {
             request.setHeader("Content-Type", "application/json");
 
 
-            // Request body
-            StringEntity reqEntity = new StringEntity(body);
+            StringEntity reqEntity = new StringEntity(body, "utf-8");
             request.setEntity(reqEntity);
 
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
 
-            if (entity != null)
-            {
-                System.out.println(EntityUtils.toString(entity));
+            if (entity != null) {
+                json = EntityUtils.toString(entity);
             }
-        }
-        catch (Exception e)
-        {
+
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        return "";
+        return json.contains("\"success\":false") ? "" : json.replaceAll(".*\\\"IntDocNumber\\\"\\:\\\"(\\d*)\\\".*", "$1");
     }
 }

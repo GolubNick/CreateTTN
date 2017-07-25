@@ -3,21 +3,20 @@ package ExcelHelper;
 import Model.ExpressInvoice;
 import Model.ExpressInvoiceProperties;
 import NovaPoshta.RESTClientHelper;
+import UI.UserInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Iterator;
 
 public class ExcelHelper {
 
-    private String path;
     private HSSFWorkbook myExcelBook;
     private HSSFSheet myExcelSheet;
-    private HSSFRow row;
 
     public ExcelHelper(String pathFile) {
         try {
@@ -30,10 +29,13 @@ public class ExcelHelper {
     private void getTTNAndWriteIT(String pathFile) throws Exception {
         myExcelBook = new HSSFWorkbook(new FileInputStream(pathFile));
         myExcelSheet = myExcelBook.getSheetAt(0);
-
+        int countRows = 100 / myExcelSheet.getLastRowNum();
         Iterator<Row> it = myExcelSheet.iterator();
-        it.next();
+        if (it.hasNext()) {
+            it.next();
+        }
         while (it.hasNext()) {
+            UserInterface.progressBar.setValue(countRows);
             Row row = it.next();
 
             String RecipientName = row.getCell(3).getStringCellValue().replace("-", "").trim();
@@ -57,9 +59,10 @@ public class ExcelHelper {
             String ttn = new RESTClientHelper().getTTN(json);
 
             row.getCell(14).setCellValue(ttn);
-
+            countRows+=countRows;
         }
-        myExcelBook.write();
+        UserInterface.progressBar.setValue(100);
+        myExcelBook.write(new FileOutputStream(pathFile));
         myExcelBook.close();
     }
 }
