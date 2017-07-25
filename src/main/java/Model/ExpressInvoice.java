@@ -18,20 +18,4 @@ public class ExpressInvoice {
         this.methodProperties = methodProperties;
     }
 
-//    public String getApiKey() {
-//        return apiKey;
-//    }
-//
-//    public String getModelName() {
-//        return modelName;
-//    }
-//
-//    public String getCalledMethod() {
-//        return calledMethod;
-//    }
-//
-//    public ExpressInvoiceProperties getMethodProperties() {
-//        return methodProperties;
-//    }
-
 }

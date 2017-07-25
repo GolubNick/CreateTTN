@@ -38,8 +38,8 @@ public class ExcelHelper {
 
             String RecipientName = row.getCell(3).getStringCellValue().replace("-", "").trim();
             String RecipientsPhone = row.getCell(4).getStringCellValue();
-            String RecipientCityName = row.getCell(12).getStringCellValue().replaceAll(".*-(.*),\\sÂ³ää³ëåííÿ.*", "$1").trim();
-            String RecipientAddressName = row.getCell(12).getStringCellValue().replaceAll(".*Â³ää³ëåííÿ\\s¹(\\d*).*", "$1").trim();
+            String RecipientCityName = row.getCell(12).getStringCellValue().replaceAll(".*-\\s(\\D*?),.*", "$1").trim();
+            String RecipientAddressName = row.getCell(12).getStringCellValue().contains("â„–") ? row.getCell(12).getStringCellValue().replaceAll(".*â„–(\\d*).*", "$1").trim() : "";
             String price = String.valueOf(row.getCell(6).getNumericCellValue());
 
             ExpressInvoiceProperties expressInvoiceProperties = new ExpressInvoiceProperties();
