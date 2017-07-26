@@ -68,6 +68,7 @@ public class UserInterface implements ActionListener {
                     start.setEnabled(false);
                     exit.setEnabled(false);
                     new ExcelHelper(absolutePathFile);
+                    UserInterface.progressBar.setValue(100);
                     selectFile.setEnabled(true);
                     start.setEnabled(true);
                     exit.setEnabled(true);

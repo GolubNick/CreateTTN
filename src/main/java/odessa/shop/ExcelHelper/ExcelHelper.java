@@ -42,7 +42,7 @@ public class ExcelHelper {
             String RecipientName = row.getCell(3).getStringCellValue().replace("-", "").trim();
             String RecipientsPhone = row.getCell(4).getStringCellValue();
             String RecipientCityName = row.getCell(12).getStringCellValue().replaceAll(".*-\\s(\\D*?),.*", "$1").trim();
-            String RecipientAddressName = row.getCell(12).getStringCellValue().contains("№") ? row.getCell(12).getStringCellValue().replaceAll(".*№(\\d*).*", "$1").trim() : "";
+            String RecipientAddressName = row.getCell(12).getStringCellValue().contains("№") ? row.getCell(12).getStringCellValue().replaceAll(".*№(\\d*).*", "$1").trim() : "1";
             String price = String.valueOf(row.getCell(6).getNumericCellValue());
 
             ExpressInvoiceProperties expressInvoiceProperties = new ExpressInvoiceProperties();
@@ -63,7 +63,6 @@ public class ExcelHelper {
             row.getCell(14).setCellValue(ttn);
             countRows+=countRows;
         }
-        UserInterface.progressBar.setValue(100);
         myExcelBook.write(new FileOutputStream(pathFile));
         myExcelBook.close();
     }

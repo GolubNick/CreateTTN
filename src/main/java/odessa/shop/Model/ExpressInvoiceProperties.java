@@ -37,6 +37,7 @@ public class ExpressInvoiceProperties {
     private final String SenderAddress = "5a39e58e-e1c2-11e3-8c4a-0050568002cf";
     @JsonProperty("ContactSender")
     private String ContactSender = "9cbea1e6-7057-11e7-8ba8-005056881c6b";
+//    private String ContactSender = "dc213786-71d3-11e7-8ba8-005056881c6b";
     @JsonProperty("SendersPhone")
     private final String SendersPhone = "380957031465";
     @JsonProperty("RecipientCityName")
