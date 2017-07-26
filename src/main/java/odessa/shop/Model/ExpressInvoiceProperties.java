@@ -31,13 +31,13 @@ public class ExpressInvoiceProperties {
     @JsonProperty("CitySender")
     private final String CitySender = "db5c88d0-391c-11dd-90d9-001a92567626";
     @JsonProperty("Sender")
-    private String Sender = "98a6581b-5755-11e6-a54a-005056801333";
-//    private String Sender = "a25e6e4d-9b58-11e6-a54a-005056801333";
+//    private String Sender = "98a6581b-5755-11e6-a54a-005056801333";
+    private String Sender = "a25e6e4d-9b58-11e6-a54a-005056801333";
     @JsonProperty("SenderAddress")
     private final String SenderAddress = "5a39e58e-e1c2-11e3-8c4a-0050568002cf";
     @JsonProperty("ContactSender")
-    private String ContactSender = "9cbea1e6-7057-11e7-8ba8-005056881c6b";
-//    private String ContactSender = "dc213786-71d3-11e7-8ba8-005056881c6b";
+//    private String ContactSender = "9cbea1e6-7057-11e7-8ba8-005056881c6b";
+    private String ContactSender = "225cca34-7231-11e7-8ba8-005056881c6b";
     @JsonProperty("SendersPhone")
     private final String SendersPhone = "380957031465";
     @JsonProperty("RecipientCityName")
