@@ -1,4 +1,6 @@
-import UI.UserInterface;
+package odessa.shop;
+
+import odessa.shop.UI.UserInterface;
 import javax.swing.*;
 
 public class Program {

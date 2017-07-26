@@ -1,4 +1,4 @@
-package NovaPoshta;
+package odessa.shop.NovaPoshta;
 
 import java.net.URI;
 
@@ -41,6 +41,6 @@ public class RESTClientHelper {
             System.out.println(e.getMessage());
         }
 
-        return json.contains("\"success\":false") ? "" : json.replaceAll(".*\\\"IntDocNumber\\\"\\:\\\"(\\d*)\\\".*", "$1");
+        return json.contains("IntDocNumber") ? json.replaceAll(".*\\\"IntDocNumber\\\"\\:\\\"(\\d*)\\\".*", "$1") : "";
     }
 }

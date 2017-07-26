@@ -1,6 +1,6 @@
-package UI;
+package odessa.shop.UI;
 
-import ExcelHelper.ExcelHelper;
+import odessa.shop.ExcelHelper.ExcelHelper;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -68,12 +68,11 @@ public class UserInterface implements ActionListener {
                     start.setEnabled(false);
                     exit.setEnabled(false);
                     new ExcelHelper(absolutePathFile);
+                    selectFile.setEnabled(true);
+                    start.setEnabled(true);
+                    exit.setEnabled(true);
                 }});
                 t.start();
-//                    selectFile.setEnabled(true);
-//                    start.setEnabled(true);
-//                    exit.setEnabled(true);
-
             }
         }
         else{

@@ -1,12 +1,13 @@
-package ExcelHelper;
+package odessa.shop.ExcelHelper;
 
-import Model.ExpressInvoice;
-import Model.ExpressInvoiceProperties;
-import NovaPoshta.RESTClientHelper;
-import UI.UserInterface;
+import odessa.shop.Model.ExpressInvoice;
+import odessa.shop.Model.ExpressInvoiceProperties;
+import odessa.shop.NovaPoshta.RESTClientHelper;
+import odessa.shop.UI.UserInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.io.FileInputStream;
@@ -58,6 +59,7 @@ public class ExcelHelper {
 
             String ttn = new RESTClientHelper().getTTN(json);
 
+            row.getCell(14).setCellType(CellType.STRING);
             row.getCell(14).setCellValue(ttn);
             countRows+=countRows;
         }

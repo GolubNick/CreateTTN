@@ -1,4 +1,4 @@
-package Model;
+package odessa.shop.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

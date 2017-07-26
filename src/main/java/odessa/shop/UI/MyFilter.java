@@ -1,4 +1,4 @@
-package UI;
+package odessa.shop.UI;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;

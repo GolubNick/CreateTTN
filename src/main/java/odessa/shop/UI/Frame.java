@@ -1,4 +1,4 @@
-package UI;
+package odessa.shop.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,17 +11,11 @@ public class Frame extends JFrame{
         setBounds(x, y, width, height);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    Frame(String title, int width, int height) {
-        this(title, 50, 50, width, height);
+        this.setResizable(false);
     }
 
     Frame(String title) {
         this(title, 50, 50, 300, 120);
     }
 
-    Frame() {
-        this("My Swing Application");
-    }
 }
