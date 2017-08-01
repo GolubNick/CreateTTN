@@ -35,14 +35,19 @@ public class RESTClientHelper {
 
             if (entity != null) {
                 json = EntityUtils.toString(entity);
-                Logger.get().setWriter(json);
             }
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        return json.contains("IntDocNumber") ? json.replaceAll(".*\\\"IntDocNumber\\\"\\:\\\"(\\d*)\\\".*", "$1") : "";
+        String ttn = "";
+        if (json.contains("IntDocNumber")) {
+            ttn = json.replaceAll(".*\\\"IntDocNumber\\\"\\:\\\"(\\d*)\\\".*", "$1");
+        }
+        else{
+            Logger.get().setWriter(json);
+        }
+        return ttn;
     }
 }

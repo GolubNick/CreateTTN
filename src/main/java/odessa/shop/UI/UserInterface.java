@@ -18,8 +18,6 @@ public class UserInterface implements ActionListener {
     private JFileChooser fileChooser;
     private String absolutePathFile;
 
-    public static String labelLogFile;
-
     public static JProgressBar progressBar;
 
     public UserInterface() {

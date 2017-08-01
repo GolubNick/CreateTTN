@@ -46,8 +46,10 @@ public class Logger {
 
     public void closeWriter() {
         try {
-            UserInterface.labelLogFile = logFile.getCanonicalPath();
             writer.close();
+            if (logFile.length() == 0){
+                logFile.delete();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,8 +57,8 @@ public class Logger {
 
     public String getLogPath(){
         try {
-            return logFile.getCanonicalPath();
-        } catch (IOException e) {
+            return logFile.exists() ? logFile.getCanonicalPath() : "";
+        } catch (Exception e) {
             return "";
         }
     }
