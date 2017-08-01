@@ -4,6 +4,7 @@ import odessa.shop.ExcelHelper.ExcelHelper;
 import odessa.shop.LogHelper.Logger;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,17 +19,27 @@ public class UserInterface implements ActionListener {
     private JFileChooser fileChooser;
     private String absolutePathFile;
 
+    private JPanel panel1;
+    private JPanel panel2;
+    private JPanel panel3;
+    private JPanel panel4;
+
     public static JProgressBar progressBar;
 
     public UserInterface() {
         mainFrame = new Frame("Create TTN");
         mainFrame.setVisible(true);
         selectFile = new JButton("Select File");
+        selectFile.setPreferredSize(new Dimension(100, 25));
         start = new JButton("Start");
+        start.setPreferredSize(new Dimension(100, 25));
         exit = new JButton("Exit");
+        exit.setPreferredSize(new Dimension(100, 25));
         fileChooser = new JFileChooser();
+
         labelPath = new JLabel();
         absolutePathFileLog = new JLabel();
+
         selectFile.addActionListener(this);
         start.addActionListener(this);
         exit.addActionListener(this);
@@ -37,15 +48,25 @@ public class UserInterface implements ActionListener {
         progressBar.setStringPainted(true);
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
+        progressBar.setPreferredSize(new Dimension(300, 25));
 
         fileChooser.setFileFilter(new MyFilter());
 
-        mainFrame.add(selectFile);
-        mainFrame.add(start);
-        mainFrame.add(exit);
-        mainFrame.add(labelPath);
-        mainFrame.add(progressBar);
-        mainFrame.add(absolutePathFileLog);
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        panel3 = new JPanel();
+        panel4 = new JPanel();
+        mainFrame.add(panel1);
+        mainFrame.add(panel2);
+        mainFrame.add(panel3);
+        mainFrame.add(panel4);
+
+        panel1.add(selectFile);
+        panel1.add(start);
+        panel1.add(exit);
+        panel2.add(labelPath);
+        panel3.add(progressBar);
+        panel4.add(absolutePathFileLog);
         progressBar.setVisible(false);
         absolutePathFileLog.setVisible(false);
     }

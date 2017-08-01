@@ -1,7 +1,5 @@
 package odessa.shop.LogHelper;
 
-import odessa.shop.UI.UserInterface;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
