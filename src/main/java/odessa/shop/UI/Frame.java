@@ -15,7 +15,7 @@ public class Frame extends JFrame{
     }
 
     Frame(String title) {
-        this(title, 50, 50, 300, 120);
+        this(title, 150, 150, 300, 150);
     }
 
 }

@@ -2,6 +2,7 @@ package odessa.shop.NovaPoshta;
 
 import java.net.URI;
 
+import odessa.shop.LogHelper.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -34,6 +35,7 @@ public class RESTClientHelper {
 
             if (entity != null) {
                 json = EntityUtils.toString(entity);
+                Logger.get().setWriter(json);
             }
 
 

@@ -1,6 +1,7 @@
 package odessa.shop.UI;
 
 import odessa.shop.ExcelHelper.ExcelHelper;
+import odessa.shop.LogHelper.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,8 +14,12 @@ public class UserInterface implements ActionListener {
     private JButton start;
     private JButton exit;
     private JLabel labelPath;
+    private JLabel absolutePathFileLog;
     private JFileChooser fileChooser;
     private String absolutePathFile;
+
+    public static String labelLogFile;
+
     public static JProgressBar progressBar;
 
     public UserInterface() {
@@ -25,6 +30,7 @@ public class UserInterface implements ActionListener {
         exit = new JButton("Exit");
         fileChooser = new JFileChooser();
         labelPath = new JLabel();
+        absolutePathFileLog = new JLabel();
         selectFile.addActionListener(this);
         start.addActionListener(this);
         exit.addActionListener(this);
@@ -41,7 +47,9 @@ public class UserInterface implements ActionListener {
         mainFrame.add(exit);
         mainFrame.add(labelPath);
         mainFrame.add(progressBar);
+        mainFrame.add(absolutePathFileLog);
         progressBar.setVisible(false);
+        absolutePathFileLog.setVisible(false);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -72,6 +80,8 @@ public class UserInterface implements ActionListener {
                     selectFile.setEnabled(true);
                     start.setEnabled(true);
                     exit.setEnabled(true);
+                    absolutePathFileLog.setVisible(true);
+                    absolutePathFileLog.setText(Logger.get().getLogPath());
                 }});
                 t.start();
             }

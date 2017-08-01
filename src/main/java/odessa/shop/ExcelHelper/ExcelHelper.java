@@ -1,5 +1,6 @@
 package odessa.shop.ExcelHelper;
 
+import odessa.shop.LogHelper.Logger;
 import odessa.shop.Model.ExpressInvoice;
 import odessa.shop.Model.ExpressInvoiceProperties;
 import odessa.shop.NovaPoshta.RESTClientHelper;
@@ -58,11 +59,11 @@ public class ExcelHelper {
             String json = mapper.writeValueAsString(expressInvoice);
 
             String ttn = new RESTClientHelper().getTTN(json);
-
             row.getCell(14).setCellType(CellType.STRING);
             row.getCell(14).setCellValue(ttn);
             countRows+=countRows;
         }
+        Logger.get().closeWriter();
         myExcelBook.write(new FileOutputStream(pathFile));
         myExcelBook.close();
     }
