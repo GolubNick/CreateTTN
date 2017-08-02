@@ -29,6 +29,7 @@ public class ExcelHelper {
     }
 
     private void getTTNAndWriteIT(String pathFile) throws Exception {
+        int count = 1;
         myExcelBook = new HSSFWorkbook(new FileInputStream(pathFile));
         myExcelSheet = myExcelBook.getSheetAt(0);
         int countRows = 100 / myExcelSheet.getLastRowNum();
@@ -48,7 +49,7 @@ public class ExcelHelper {
 
             ExpressInvoiceProperties expressInvoiceProperties = new ExpressInvoiceProperties();
             expressInvoiceProperties.setCost(price);
-            expressInvoiceProperties.setDescription("test");
+            expressInvoiceProperties.setDescription("");
             expressInvoiceProperties.setRecipientAddressName(RecipientAddressName);
             expressInvoiceProperties.setRecipientCityName(RecipientCityName);
             expressInvoiceProperties.setRecipientName(RecipientName);
@@ -59,6 +60,10 @@ public class ExcelHelper {
             String json = mapper.writeValueAsString(expressInvoice);
 
             String ttn = new RESTClientHelper().getTTN(json);
+            if (ttn.isEmpty()){
+                Logger.get().setWriter(count++ + " : " + RecipientName + " - " + RecipientsPhone + " - " +
+                        RecipientCityName + " - " + RecipientAddressName + " - " + price);
+            }
             row.getCell(14).setCellType(CellType.STRING);
             row.getCell(14).setCellValue(ttn);
             countRows+=countRows;
