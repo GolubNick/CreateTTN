@@ -19,7 +19,8 @@ public class RESTClientHelper {
         HttpClient httpclient = HttpClients.createDefault();
 
         try {
-            URIBuilder builder = new URIBuilder("http://testapi.novaposhta.ua/v2.0/en/save_warehouse/json/");
+//            URIBuilder builder = new URIBuilder("http://testapi.novaposhta.ua/v2.0/en/save_warehouse/json/");
+            URIBuilder builder = new URIBuilder("http://api.novaposhta.ua/v2.0/json/");
 
 
             URI uri = builder.build();
