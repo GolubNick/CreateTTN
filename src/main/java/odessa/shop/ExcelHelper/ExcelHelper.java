@@ -34,13 +34,14 @@ public class ExcelHelper {
         int count = 1;
         myExcelBook = new HSSFWorkbook(new FileInputStream(pathFile));
         myExcelSheet = myExcelBook.getSheetAt(0);
+        int percent = 0;
         int countRows = 100 / myExcelSheet.getLastRowNum();
         Iterator<Row> it = myExcelSheet.iterator();
         if (it.hasNext()) {
             it.next();
         }
         while (it.hasNext()) {
-            UserInterface.progressBar.setValue(countRows);
+            UserInterface.progressBar.setValue(percent);
 
             Row row = it.next();
             boolean value = row.getCell(14).getCellTypeEnum().compareTo(CellType.STRING) == 0 ? (row.getCell(14).getStringCellValue().isEmpty() ? true : false) : (row.getCell(14).getNumericCellValue() == 0.0 ? true : false);
@@ -72,7 +73,7 @@ public class ExcelHelper {
                 row.getCell(14).setCellType(CellType.STRING);
                 row.getCell(14).setCellValue(ttn);
             }
-            countRows += countRows;
+            percent = percent + countRows;
         }
         Logger.get().closeWriter();
         myExcelBook.write(new FileOutputStream(pathFile));
